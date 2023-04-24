@@ -9,12 +9,9 @@ exports.form = (req,res)=>{
     res.render("form");
 }
 
-exports.saveCreateUser = async (req,res)=>{
+exports.saveform = async (req,res)=>{
     let existUser = await User.findOne({username: req.body.username});
     if(existUser) res.status(422).send("User name is exist");
-
-    // const salt = await bcrypt.genSalt(10);
-    // const hashPwd = await bcrypt.hash(req.body.password,salt);
 
     const user = new User({
         firstname : req.body.firstname,
